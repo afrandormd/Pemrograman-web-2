@@ -1,3 +1,6 @@
+// import file globa..css
+import './globals.css';
+
 import Link from "next/link"
 
 export const metadata = {
@@ -14,8 +17,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
       {/* area header */}
-      <header>
-        <a href={"/"}>Home</a> | 
+      <header className='text-menu'>
+        <Link href={"/"}>Home</Link> | 
         <Link href={"/profil"}>Profil</Link> |
         <Link href={"/visi"}>Visi</Link> |
         Kontak
