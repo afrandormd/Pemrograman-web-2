@@ -1,11 +1,22 @@
-## Getting Started
+## Projek pembelajaran pemrograman web 2 - IF 22 C
 
-### Clone repository
+### Cara mengambil & menjalankan projek
 Buka terminal lalu arahkan ke lokasi yang diinginkan, kemudian jalankan perintah berikut:
 ```bash
 git clone https://github.com/afrandormd/Pemrograman-web-2.git
 ```
-Setelah clone repositori ini masuk ke dalam projek tersebut lakukan langkah berikut ini:
+
+Setelah clone repositori ini masuk ke dalam projek tersebut dengan cara:
+```bash
+cd Pemrograman-web-2
+```
+
+Lalu jalankan perintah berikut ini untuk menginstall `dependencys` atau modules yang dibutuhkan jika menggunakan `npm`
+```bash
+npm install 
+```
+
+Setelah itu jalankan projek dengan perintah berikut ini:
 ```bash
 npm run dev
 # atau 
