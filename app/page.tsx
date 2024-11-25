@@ -1,21 +1,38 @@
-import React from "react";
-import { PrismaClient } from "@prisma/client";
-import { table } from "console";
+"use client";
+import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
+import { getData, setUpdateStatus } from "./models/mahasiswa";
 
-const prisma = new PrismaClient();
+// buat fungsi untuk dialog hapus
+async function setDelete(npm: string, nama: string) {
+  // alert("Hapus Data");
+  if (confirm(`Data Mahasiswa : ${npm} - ${nama} Ingin Dihapus ?`) == true) {
+    // alert("Ok");
+    await setUpdateStatus();
+  }
+  // else {
+  //   alert("Cancel");
+  // }
+}
 
-export default async function Rootpage() {
-  // buat variabel mahasiswa
+export default function Rootpage() {
+  // buat hook
+  // hook dengan "use state"
+  const [getValue, setValue] = useState({});
 
-  // menampilkan data mahasiswa dengan filter berstatus Y
-  const mahasiswa = await prisma.tb_mahasiswa.findMany({
-    where: {
-      status: "Y",
-      // prodi: {
-      //   contains: "formasi"
-      // },
-    },
-  });
+  // buat fungsi untuk panggil "getData"
+  async function fetchData() {
+    setValue(await getData());
+  }
+
+  // hook dengan "use effect"
+  useEffect(() => {
+    // panggil fungsi "fetchData"
+    fetchData();
+  }, []);
+
   // const mahasiswa = await prisma.tb_mahasiswa.findUnique({
   //   where: {
   //     id: 3,
@@ -26,30 +43,51 @@ export default async function Rootpage() {
       {/* tampilkan data mahasiswa */}
       <table className="w-full">
         <thead>
-          <tr className="bg-slate-300 h-12">
-            <th className="w-10% border border-slate-500">Aksi</th>
+          <tr className="bg-teal-100 h-12">
             <th className="w-10% border border-slate-500">NPM</th>
             <th className="w-1/2 border border-slate-500">Nama</th>
             <th className="w-30% border border-slate-500">Prodi</th>
+            <th className="w-10% border border-slate-500">Aksi</th>
           </tr>
         </thead>
         <tbody>
-          {mahasiswa.map((data: any, index: number) => (
+          {Object.values(getValue).map((data: any, index: number) => (
             // <div key={index}>
             //   <div>
             //     {data.npm} - {data.nama} - {data.prodi}
             //   </div>
             // </div>
-            <tr>
-              <td className="border border-slate-500 px-2.5 text-center">/</td>
-              <td className="border border-slate-500 px-2.5 text-center font-bold">
+            <tr key={index}>
+              <td className="border border-slate-500 p-2.5 text-center">
                 {data.npm}
               </td>
-              <td className="border border-slate-500 px-2.5 text-justify">
+              <td className="border border-slate-500 p-2.5 text-justify">
                 {data.nama}
               </td>
-              <td className="border border-slate-500 px-2.5 text-center">
+              <td className="border border-slate-500 p-2.5 text-center">
                 {data.prodi}
+              </td>
+              <td className="border border-slate-500 p-2.5 text-center">
+                {/* icon edit */}
+                <Link href={`/edit/${btoa(data.npm)}}`}>
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    className="bg-blue-500 text-white p-2 mr-1 rounded-full hover:bg-blue-700"
+                    title="Ubah Data"
+                  />
+                </Link>
+
+                {/* icon delete */}
+                <Link href={"/"}>
+                  <FontAwesomeIcon
+                    icon={faTrashCan}
+                    className="bg-red-500 text-white p-2 ml-1 rounded-full hover:bg-red-700"
+                    title="Hapus Data"
+                    onClick={() => {
+                      setDelete(data.nama, data.npm);
+                    }}
+                  />
+                </Link>
               </td>
             </tr>
           ))}

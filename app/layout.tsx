@@ -1,6 +1,10 @@
 import Link from "next/link";
 import "./globals.css";
 
+// import font awesome
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import Image from "next/image";
+
 export const metadata = {
   title: "Dev Rando",
   description: "Made with love by Afrando",
@@ -17,20 +21,27 @@ export default function RootLayout({
         {/* area header */}
         <header>
           {/* area image/banner */}
-          <img src="../images/logo.png" alt="Logo UTI" />
+          {/* <img src="../images/logo.png" alt="Logo UTI" /> */}
+          <Image
+            src="/images/logo.png"
+            alt="logo uti"
+            width={320}
+            height={60}
+            priority
+          />
 
           {/* area menu */}
-          <nav className="text-center flex justify-center">
+          <nav className="text-center flex justify-end mx-4">
             <Link
               href={"/"}
-              className="bg-teal-500 hover:bg-teal-600 text-black 
+              className="bg-teal-500 hover:bg-teal-600 text-white 
             rounded-full px-5 py-2.5 mr-3 w-52"
             >
               Data Mahasiswa
             </Link>
             <Link
               href={"/"}
-              className="bg-teal-500 hover:bg-teal-600 text-black 
+              className="bg-teal-500 hover:bg-teal-600 text-white 
             rounded-full px-5 py-2.5 ml-3 w-52"
             >
               Log Data Mahasiswa
@@ -39,10 +50,10 @@ export default function RootLayout({
         </header>
 
         {/* area content */}
-        <section className="m-5">{children}</section>
+        <section className="m-4">{children}</section>
 
         {/* area footer */}
-        <footer className="flex justify-center bg-color1 text-color2 py-15X">
+        <footer className="flex justify-center bg-teal-700 text-white py-15X">
           Copyright &copy; 2024 - Afrando Sharein Ramadhan
         </footer>
       </body>

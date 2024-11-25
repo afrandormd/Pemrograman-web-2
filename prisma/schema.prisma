@@ -28,6 +28,10 @@ model tb_mahasiswa {
   penilaian tb_penilaian[]
 }
 
+model tb_dosen {
+  id Int @id @default(autoincrement())
+}
+
 model tb_penilaian {
   id           Int          @id @default(autoincrement())
   nilai        Float        @db.Double
