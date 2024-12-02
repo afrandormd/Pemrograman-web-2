@@ -31,7 +31,7 @@ export default function RootLayout({
           />
 
           {/* area menu */}
-          <nav className="text-center flex justify-end mx-4">
+          <nav className="text-center flex justify-center mx-4">
             <Link
               href={"/"}
               className="bg-teal-500 hover:bg-teal-600 text-white 
