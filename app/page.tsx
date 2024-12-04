@@ -52,10 +52,10 @@ export default function Rootpage() {
     <>
       <title>View Data Mahasiswa</title>
       <nav className="text-center flex justify-end mb-4">
-        <button className="btn btn-outline btn-accent">
+        <Link href={"/add"} className="btn btn-outline btn-accent">
           <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
           Tambah Data Mahasiswa
-        </button>
+        </Link>
       </nav>
       {/* Tampilkan data mahasiswa */}
       <table className="w-full border-collapse border border-slate-500">

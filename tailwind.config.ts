@@ -11,7 +11,6 @@ const config: Config = {
     //   'color1' : '#006BFF',
     //   'color2' : '#FFF100',
     // },
-
     extend: {
       colors: {
         background: "var(--background)",
@@ -33,5 +32,8 @@ const config: Config = {
     },
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["light", "dark", "corporate"],
+  },
 };
 export default config;
