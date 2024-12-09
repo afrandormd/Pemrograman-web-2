@@ -1,6 +1,21 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 export default function AddPage() {
+  // buat hook (usestate)
+  const [getNPM, setNPM] = useState("");
+  const [getNama, setNama] = useState("");
+  const [getProdi, setProdi] = useState("");
+
+  // buat fungsi simpan data
+  const setSaveData = () => {
+    if (getNPM == "" || getNama == "" || getProdi == "") {
+      alert("Lengkapi Seluruh Data !");
+    } else {
+      alert("OK");
+    }
+  };
+
   return (
     <>
       <title>Tambah Data Mahasiswa</title>
@@ -10,7 +25,10 @@ export default function AddPage() {
           <input
             type="text"
             placeholder="Ketikkan NPM anda"
-            className="input input-bordered input-accent w-full max-w-xs"
+            className="input input-bordered input-accent w-full"
+            onChange={(e) => {
+              setNPM(e.target.value);
+            }}
           />
         </div>
         <div className="col-start-1">Nama</div>
@@ -18,24 +36,35 @@ export default function AddPage() {
           <input
             type="text"
             placeholder="Ketikkan nama anda"
-            className="input input-bordered input-accent w-full max-w-xs"
+            className="input input-bordered input-accent w-full"
+            onChange={(e) => {
+              setNama(e.target.value);
+            }}
           />
         </div>
         <div className="col-start-1">Program Studi</div>
         <div className="col-span-4">
-          <select className="select select-accent w-full max-w-xs">
-            <option disabled selected>
+          <select
+            defaultValue={""}
+            className="select select-accent w-full"
+            onChange={(e) => {
+              setProdi(e.target.value);
+            }}
+          >
+            <option value={""} disabled>
               Pilih program studi
             </option>
-            <option>Informatika</option>
-            <option>Sistem Informasi</option>
-            <option>Teknik Komputer</option>
-            <option>Teknik Elektro</option>
-            <option>Teknik Sipil</option>
+            <option value={"Informatika"}>Informatika</option>
+            <option value={"Sistem Informasi"}>Sistem Informasi</option>
+            <option value={"Teknik Komputer"}>Teknik Komputer</option>
+            <option value={"Teknik Elektro"}>Teknik Elektro</option>
+            <option value={"Teknik Sipil"}>Teknik Sipil</option>
           </select>
         </div>
         <div className="col-start-2 col-span-4">
-          <button className="btn btn-primary mr-5X w-28">Simpan</button>
+          <button className="btn btn-primary mr-5X w-28" onClick={setSaveData}>
+            Simpan
+          </button>
           <button className="btn btn-neutral ml-5X w-28">Batal</button>
         </div>
       </div>

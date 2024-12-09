@@ -41,10 +41,10 @@ export default function RootLayout({
                     <summary>Menu Mahasiswa</summary>
                     <ul className="bg-base-100 rounded-t-none p-2">
                       <li>
-                        <a>Data Mahasiswa</a>
+                        <Link href={"/"}> Data Mahasiswa </Link>
                       </li>
                       <li>
-                        <a>Log Mahasiswa</a>
+                        <Link href={"/"}>Log Data Mahasiswa</Link>
                       </li>
                     </ul>
                   </details>

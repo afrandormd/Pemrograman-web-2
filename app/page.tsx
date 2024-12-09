@@ -25,6 +25,8 @@ async function setDelete(npm: string, nama: string) {
 
 export default function Rootpage() {
   // Hook untuk menyimpan data mahasiswa
+  // getValue = digunakan untuk menampilkan data
+  // setValue = digunakan untuk memproses data
   const [getValue, setValue] = useState<any[]>([]);
 
   // Fungsi untuk mengambil data
