@@ -29,3 +29,14 @@ export const setUpdateStatus = async (npm: string) => {
     },
   });
 };
+
+// buat fungsi check data mahasiswa (npm)
+export const checkData = async (npm: string) => {
+  // buat variabel "check"
+  const check = await prisma.tb_mahasiswa.findMany({
+    where: {
+      npm: npm,
+    },
+  });
+  return check;
+};

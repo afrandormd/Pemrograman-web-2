@@ -59,14 +59,14 @@ export default function RootLayout({
           <nav className="text-center flex justify-center mx-28">
             <Link
               href={"/"}
-              className="bg-teal-500 hover:bg-teal-600 text-white 
+              className="bg-teal-800 hover:bg-teal-600 text-white 
             rounded-full px-5 py-2.5 mr-3 w-52"
             >
               Data Mahasiswa
             </Link>
             <Link
               href={"/"}
-              className="bg-teal-500 hover:bg-teal-600 text-white 
+              className="bg-teal-800 hover:bg-teal-600 text-white 
             rounded-full px-5 py-2.5 ml-3 w-52"
             >
               Log Data Mahasiswa
